@@ -556,6 +556,37 @@ h6 {
   bottom: 15px;
 }
 
+/* WhatsApp floating button */
+.whatsapp-float {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 70px; /* Above scroll-top (44px height + margin) */
+  z-index: 99999;
+  background-color: #25D366; /* WhatsApp green */
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: all 0.4s;
+}
+
+.whatsapp-float i {
+  font-size: 24px;
+  color: #ffffff;
+  line-height: 0;
+}
+
+.whatsapp-float:hover {
+  background-color: #1ebe5d;
+}
+
+.whatsapp-float.active {
+  visibility: visible;
+  opacity: 1;
+}
+
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
 --------------------------------------------------------------*/

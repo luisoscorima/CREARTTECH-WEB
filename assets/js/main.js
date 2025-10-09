@@ -73,9 +73,27 @@
    */
   let scrollTop = document.querySelector('.scroll-top');
 
+  // Inject WhatsApp floating button (visible on all pages)
+  const whatsappHref = 'https://api.whatsapp.com/send?phone=51968330895&text=Hola,%20Quisiera%20consultar%20sobre%20uno%20de%20sus%20servicios';
+  let whatsappFloat = document.querySelector('.whatsapp-float');
+  if (!whatsappFloat) {
+    whatsappFloat = document.createElement('a');
+    whatsappFloat.href = whatsappHref;
+    whatsappFloat.target = '_blank';
+    whatsappFloat.rel = 'noopener';
+  whatsappFloat.className = 'whatsapp-float d-flex align-items-center justify-content-center';
+  whatsappFloat.setAttribute('title', 'Escríbenos por WhatsApp');
+  whatsappFloat.setAttribute('aria-label', 'Escríbenos por WhatsApp');
+    whatsappFloat.innerHTML = '<i class="bi bi-whatsapp"></i>';
+    document.body.appendChild(whatsappFloat);
+  }
+
   function toggleScrollTop() {
     if (scrollTop) {
       window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
+    }
+    if (whatsappFloat) {
+      window.scrollY > 100 ? whatsappFloat.classList.add('active') : whatsappFloat.classList.remove('active');
     }
   }
   scrollTop.addEventListener('click', (e) => {
