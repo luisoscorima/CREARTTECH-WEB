@@ -56,19 +56,24 @@
       headers: {'X-Requested-With': 'XMLHttpRequest'}
     })
     .then(response => {
-      if( response.ok ) {
-        return response.text();
-      } else {
-        throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
+      const contentType = response.headers.get('content-type');
+      if (response.ok && contentType && contentType.includes('application/json')) {
+        return response.json();
       }
+      if (response.ok) {
+        return response.text();
+      }
+      throw new Error(`${response.status} ${response.statusText} ${response.url}`);
     })
     .then(data => {
       thisForm.querySelector('.loading').classList.remove('d-block');
-      if (data.trim() == 'OK') {
+      const isSuccess = (typeof data === 'object' && data.success) || (typeof data === 'string' && data.trim() === 'OK');
+      if (isSuccess) {
         thisForm.querySelector('.sent-message').classList.add('d-block');
-        thisForm.reset(); 
+        thisForm.reset();
       } else {
-        throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action); 
+        const msg = typeof data === 'object' ? (data.message || JSON.stringify(data)) : data;
+        throw new Error(msg || 'Error al enviar el mensaje.');
       }
     })
     .catch((error) => {
@@ -78,7 +83,8 @@
 
   function displayError(thisForm, error) {
     thisForm.querySelector('.loading').classList.remove('d-block');
-    thisForm.querySelector('.error-message').innerHTML = error;
+    const msg = error && error.message ? error.message : error;
+    thisForm.querySelector('.error-message').innerHTML = msg;
     thisForm.querySelector('.error-message').classList.add('d-block');
   }
 
