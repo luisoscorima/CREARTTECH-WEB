@@ -74,7 +74,7 @@
   let scrollTop = document.querySelector('.scroll-top');
 
   // Inject WhatsApp floating button (visible on all pages)
-  const whatsappHref = 'https://api.whatsapp.com/send?phone=51968330895&text=Hola,%20Quisiera%20consultar%20sobre%20uno%20de%20sus%20servicios';
+  const whatsappHref = 'https://api.whatsapp.com/send?phone=51928581354&text=Hola,%20Quisiera%20consultar%20sobre%20uno%20de%20sus%20servicios';
   let whatsappFloat = document.querySelector('.whatsapp-float');
   if (!whatsappFloat) {
     whatsappFloat = document.createElement('a');

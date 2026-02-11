@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap para que Google indexe todas las páginas
+Sitemap: https://creart.tech/sitemap.xml
