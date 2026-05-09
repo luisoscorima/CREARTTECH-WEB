@@ -24,6 +24,26 @@ body.wa-landing #header.header.fixed-top {
   right: 0;
 }
 
+/*
+  En móvil, unos pocos px de overflow horizontal hacen que el navegador “escale” la página hacia fuera
+  (parece zoom) y los elementos fixed parecen no llegar al borde.
+*/
+html:has(body.wa-landing) {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body.wa-landing {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+.wa-landing main.main {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
 .wa-landing {
   --wa-green: #25d366;
   --wa-green-dark: #128c7e;
@@ -56,7 +76,8 @@ body.wa-landing #header.header.fixed-top {
   color: #fff;
   padding: 8rem 0 5rem;
   position: relative;
-  overflow: visible;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 /* Panel glass: contenido del hero sobre vidrio esmerilado */
