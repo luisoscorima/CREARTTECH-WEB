@@ -1686,8 +1686,9 @@ section.portfolio,
 }
 
 .pricing .pricing-ribbon.advanced {
-  background: var(--accent-color);
-  color: var(--contrast-color);
+  background: linear-gradient(135deg, #4dff8e 0%, #93fbaf 25%, #25D366 50%, #59a24b 75%, #c8f9a8 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 18px rgba(196, 249, 168, 0.35);
 }
 
 .pricing .pricing-ribbon.recommended {
