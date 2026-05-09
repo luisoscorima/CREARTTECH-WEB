@@ -1545,9 +1545,14 @@ section.section { padding-top: 4rem; padding-bottom: 4rem; }
   left: 0;
   right: 0;
   bottom: 0;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
   /* Por debajo del header fijo y del menú móvil abierto; por encima del contenido */
   z-index: 1035;
   padding: 12px 14px calc(12px + env(safe-area-inset-bottom, 0px));
+  padding-left: max(14px, env(safe-area-inset-left, 0px));
+  padding-right: max(14px, env(safe-area-inset-right, 0px));
   background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.85) 35%);
   display: flex;
   gap: 10px;
@@ -1557,6 +1562,8 @@ section.section { padding-top: 4rem; padding-bottom: 4rem; }
 .wa-mobile-sticky-cta .btn {
   pointer-events: auto;
   flex: 1;
+  min-width: 0; /* evita que dos botones + gap desborden el viewport (barra horizontal) */
+  white-space: normal;
   font-weight: 700;
   font-size: 0.82rem;
   border-radius: 12px;
