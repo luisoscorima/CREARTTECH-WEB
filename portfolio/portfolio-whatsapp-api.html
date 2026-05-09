@@ -20,323 +20,7 @@
   <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="../assets/css/main.css" rel="stylesheet">
-  <style>
-    .wa-landing {
-      --wa-green: #25d366;
-      --wa-green-dark: #128c7e;
-      --wa-chat-bg: #e5ddd5;
-      /* Tokens alineados con landing MALI (mock UI dentro del iPhone) */
-      --lp-primary: #0d6e5c;
-      --lp-primary-dark: #0a5748;
-      --lp-primary-light: #3db9a2;
-      --lp-accent: #19703f;
-      --lp-soft: rgba(13, 110, 92, 0.14);
-      --lp-gray: #475569;
-      --lp-gray-light: #94a3b8;
-    }
-    .wa-hero {
-      background: linear-gradient(135deg, #075e54 0%, #128c7e 45%, #1c3d32 100%);
-      color: #fff;
-      padding: 8rem 0 5rem;
-      position: relative;
-      overflow: visible;
-    }
-    .wa-hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30h60M30 0v60' stroke='%23ffffff' stroke-opacity='0.06' stroke-width='1'/%3E%3C/svg%3E");
-      pointer-events: none;
-    }
-    .wa-hero .container { position: relative; z-index: 1; }
-    .wa-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(255,255,255,0.15);
-      border-radius: 999px;
-      padding: 0.35rem 1rem;
-      font-size: 0.875rem;
-      margin-bottom: 1rem;
-    }
-    .wa-section-title { font-weight: 700; margin-bottom: 1rem; color: var(--heading-color, #2d465e); }
-    .wa-section-intro { color: color-mix(in srgb, var(--default-color, #444) 88%, transparent); max-width: 720px; }
-    .wa-landing .wa-subheading {
-      color: rgba(255, 255, 255, 0.9) !important;
-      font-weight: 600;
-      letter-spacing: 0.07em;
-    }
-    .wa-landing .wa-domain-code {
-      color: #ffffff !important;
-      font-weight: 700;
-      font-size: 1em;
-      background: rgba(92, 246, 128, 0.2);
-      border: 1px solid rgba(181, 253, 200, 0.4);
-      padding: 0.2em 0.5em;
-      border-radius: 6px;
-      text-shadow: none;
-    }
-    .wa-icon-list li { margin-bottom: 0.5rem; padding-left: 0.25rem; }
-    .wa-icon-list li i { color: var(--wa-green-dark); margin-right: 0.5rem; }
-    .wa-chat-demo {
-      background: var(--wa-chat-bg);
-      border-radius: 12px;
-      padding: 1.25rem;
-      max-width: 420px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    }
-    .wa-bubble {
-      background: #fff;
-      border-radius: 0 12px 12px 12px;
-      padding: 0.65rem 0.9rem;
-      margin-bottom: 0.65rem;
-      font-size: 0.95rem;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.06);
-      max-width: 95%;
-    }
-    .wa-bubble.bot { background: #dcf8c6; border-radius: 12px 0 12px 12px; margin-left: auto; }
-    .wa-bubble-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: #54656f; margin-bottom: 0.35rem; font-weight: 600; }
-    .pricing.section { overflow: visible; }
-    .wa-glass-card {
-      background: color-mix(in srgb, var(--glass-bg) 85%, rgba(255, 255, 255, 0.06));
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--glass-border);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-      border-radius: 20px;
-      color: rgba(255, 255, 255, 0.94);
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
-    }
-    .wa-landing .wa-glass-card .text-muted {
-      color: rgba(255, 255, 255, 0.82) !important;
-    }
-    .wa-landing .wa-glass-card strong {
-      color: #ffffff;
-      font-weight: 600;
-    }
-    .wa-landing .wa-glass-card h3,
-    .wa-landing .wa-glass-card .h5,
-    .wa-landing .wa-glass-card .h6 {
-      color: #ffffff;
-    }
-    .wa-landing .wa-glass-card .opacity-75 {
-      opacity: 1 !important;
-      color: rgba(255, 255, 255, 0.8);
-    }
-    .wa-landing .wa-glass-card code {
-      color: #d8fcee;
-      background: rgba(0, 0, 0, 0.35);
-      padding: 0.15em 0.4em;
-      border-radius: 6px;
-      text-shadow: none;
-    }
-    .wa-landing .wa-glass-card .fw-medium {
-      color: rgba(255, 255, 255, 0.95);
-    }
-    .wa-landing .wa-glass-card .wa-section-title {
-      color: #ffffff !important;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-    }
-    .wa-landing .wa-glass-card .wa-org-blurb {
-      max-width: 720px;
-      margin-left: auto;
-      margin-right: auto;
-      color: rgba(255, 255, 255, 0.88);
-      line-height: 1.65;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-    }
-    .wa-landing section.pricing .pricing-item p.small {
-      color: rgba(255, 255, 255, 0.88);
-    }
-    .wa-landing section.pricing .pricing-item p.small.opacity-75 {
-      opacity: 1 !important;
-      color: rgba(255, 255, 255, 0.8);
-    }
-    .wa-landing section.pricing .pricing-item ul li {
-      color: rgba(255, 255, 255, 0.9);
-      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
-    }
-    .wa-glass-card--sm { border-radius: 16px; }
-    .wa-bandej-preview { min-height: 280px; }
-    .wa-table-extras th, .wa-table-extras td { vertical-align: middle; }
-    .wa-table-wrap .wa-table-extras { margin-bottom: 0; color: rgba(255, 255, 255, 0.92); }
-    .wa-table-wrap .wa-table-extras thead th {
-      padding: 1rem 1.35rem;
-      background: rgba(255, 255, 255, 0.1);
-      color: #ffffff;
-      font-weight: 600;
-      border-bottom: 1px solid var(--glass-border);
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-    }
-    .wa-table-wrap .wa-table-extras tbody td {
-      padding: 0.85rem 1.35rem;
-      background: transparent;
-      border-bottom: 1px solid color-mix(in srgb, var(--glass-border), transparent 35%);
-      color: rgba(255, 255, 255, 0.9);
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
-    }
-    .wa-table-wrap .wa-table-extras tbody tr:last-child td { border-bottom: none; }
-    .wa-table-wrap .wa-table-extras tbody tr:hover td {
-      background: color-mix(in srgb, var(--accent-color), transparent 94%);
-    }
-    .wa-cta-final {
-      background: linear-gradient(135deg, #128c7e 0%, #075e54 100%);
-      color: #fff;
-      border-radius: 16px;
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-    .wa-cta-final .btn-light { font-weight: 600; }
-    section.section { padding-top: 4rem; padding-bottom: 4rem; }
-    .wa-muted-note { font-size: 0.9rem; color: color-mix(in srgb, var(--default-color) 75%, transparent); }
-
-    /* iPhone mock (igual que landing MALI — landing.css) */
-    .wa-phone-mali-wrap {
-      position: relative;
-      width: 100%;
-      max-width: 450px;
-    }
-    .wa-landing .pca-hold.iphone-6 {
-      width: 154px;
-      padding: 3px;
-      border-radius: 16.95px;
-      overflow: visible;
-      filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.25));
-      transition: filter 0.3s ease;
-    }
-    .wa-landing .pca-hold.iphone-6 .pca-main {
-      display: block;
-      position: relative;
-      background-color: #1d1f20;
-      border: 4.5px solid #1d2d2d;
-      border-top: 34.5px solid #1d2d2d;
-      border-bottom: 35.4px solid #1d2d2d;
-      border-radius: 16.95px;
-      height: 307.8px;
-      box-shadow: 0 0 0 1.5px #c6c7ca;
-      overflow: hidden;
-    }
-    .wa-landing .pca-hold.iphone-6.iphone-6--on .pca-main {
-      background-color: #efefef;
-    }
-    .wa-landing .pca-hold.iphone-6 .pca-main::after {
-      content: "";
-      position: absolute;
-      top: -19.5px;
-      left: 55%;
-      transform: translate(-27px, 0);
-      width: 4.5px;
-      height: 4.5px;
-      background-color: #959595;
-      border-radius: 100%;
-    }
-    .wa-landing .pca-hold.iphone-6 .pca-main::before {
-      content: "";
-      position: absolute;
-      top: -7.5px;
-      left: 55%;
-      opacity: 1;
-      width: 30px;
-      height: 1.5px;
-      transform: translate(-13.5px, -11.25px);
-      border-radius: 1.5px;
-      background-color: #959595;
-    }
-    .wa-landing .pca-hold.iphone-6 .pca-inner {
-      display: block;
-      height: 100%;
-      box-sizing: border-box;
-      background-size: cover;
-      background-position: center;
-      overflow-x: hidden;
-      overflow-y: auto;
-      text-shadow: none;
-    }
-    .wa-landing .pca-hold.iphone-6.iphone-6--on .pca-inner {
-      box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.4);
-    }
-    .wa-landing .pca-hold.iphone-6 .pca-sub {
-      display: block;
-      text-align: center;
-      position: relative;
-      height: 0;
-    }
-    .wa-landing .pca-hold.iphone-6 .pca-sub .pca-bot {
-      border-radius: 100%;
-      width: 21px;
-      height: 21px;
-      display: block;
-      margin: 0 auto;
-      background-color: transparent;
-      z-index: 2;
-      box-shadow: 0 0 0 1.65px #636670;
-      transform: translate(0, -28.2px);
-    }
-    @keyframes wa-lp-float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-      100% { transform: translateY(0); }
-    }
-    .wa-landing .float-animation {
-      animation: wa-lp-float 7s ease-in-out infinite;
-    }
-    .wa-landing .float-delay {
-      animation: wa-lp-float 7s ease-in-out 1s infinite;
-    }
-
-    /* Laptop mock (igual que landing MALI — landing.css) */
-    .wa-landing .laptop-device {
-      position: relative;
-      width: 100%;
-      max-width: 560px;
-      margin-left: auto;
-      margin-right: auto;
-      filter: drop-shadow(0 24px 36px rgba(0, 0, 0, 0.38));
-      transition: transform 0.8s ease;
-    }
-    .wa-landing .laptop-screen {
-      background: #1a1a1a;
-      border-radius: 12px 12px 8px 8px;
-      padding: 12px 10px 6px 10px;
-      border: 1px solid #444;
-      box-shadow: inset 0 0 0 1px #2a2a2a;
-      overflow: hidden;
-    }
-    .wa-landing .laptop-screen img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 4px;
-      background: #f1f5f9;
-    }
-    .wa-landing .laptop-base {
-      background: #cbd5e1;
-      height: 14px;
-      border-radius: 0 0 20px 20px;
-      margin-top: -2px;
-      box-shadow: 0 6px 0 #94a3b8;
-    }
-    .wa-landing .laptop-notch {
-      width: 70px;
-      height: 5px;
-      background: #64748b;
-      margin: 8px auto 0;
-      border-radius: 5px;
-    }
-    .wa-hero-composite {
-      position: relative;
-      width: 100%;
-      max-width: 580px;
-      margin-left: auto;
-      padding-bottom: 3rem;
-    }
-    @media (min-width: 992px) {
-      .wa-hero-composite {
-        margin-right: 0;
-        margin-left: auto;
-      }
-    }
-  </style>
+  <link href="../assets/css/portfolio-whatsapp-premium.css" rel="stylesheet">
 </head>
 <body class="portfolio-details-page wa-landing">
   <header id="header" class="header d-flex align-items-center fixed-top">
@@ -358,13 +42,13 @@
               <li><a href="../services/service-automatizaciones.html">Automatizaciones</a></li>
               <li class="dropdown"><a href="../services/service-software-medida.html"><span>Software a Medida</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
+                  <li><a href="portfolio-whatsapp-api.html">Plataforma WhatsApp</a></li>
                   <li><a href="../portfolio/portfolio-control-accesos.html">Sistema de Control de Accesos</a></li>
                   <li><a href="../portfolio/portfolio-ventas-pos.html">Sistema de Ventas (POS)</a></li>
                   <li><a href="../portfolio/portfolio-restaurante.html">Sistema de Restaurantes</a></li>
                   <li><a href="../portfolio/portfolio-inventario.html">Sistema de Control de Inventarios</a></li>
                   <li><a href="../portfolio/portfolio-logistica.html">Sistema de Logística</a></li>
                   <li><a href="../portfolio/portfolio-parqueo.html">Sistema de Parqueo</a></li>
-                  <li><a href="../portfolio/portfolio-whatsapp-api.html">Plataforma WhatsApp</a></li>
                 </ul>
               </li>
             </ul>
@@ -379,113 +63,87 @@
   </header>
 
   <main class="main">
-    <section class="wa-hero">
-      <div class="container">
+    <!-- Ondas fijas al viewport (mismo comportamiento que index.html #hero .hero-waves) -->
+    <svg class="hero-waves wa-viewport-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <path id="wa-wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+      </defs>
+      <g class="wave1">
+        <use xlink:href="#wa-wave-path" x="50" y="3"></use>
+      </g>
+      <g class="wave2">
+        <use xlink:href="#wa-wave-path" x="50" y="0"></use>
+      </g>
+      <g class="wave3">
+        <use xlink:href="#wa-wave-path" x="50" y="9"></use>
+      </g>
+    </svg>
+    <!-- Landing WhatsApp: estilos premium en ../assets/css/portfolio-whatsapp-premium.css (blobs, cards, dashboard mock, pricing, CTA móvil). -->
+    <!-- Hero premium: blobs, métricas flotantes; laptop y móvil con capturas reales -->
+    <section class="wa-hero wa-hero--premium">
+      <div class="wa-hero-blobs" aria-hidden="true"></div>
+      <div class="wa-hero-noise" aria-hidden="true"></div>
+      <div class="container position-relative">
         <div class="row align-items-center gy-5">
           <div class="col-lg-6" data-aos="fade-up">
-            <div class="wa-badge"><i class="bi bi-whatsapp"></i> Solución empresarial</div>
+            <div class="wa-badge"><i class="bi bi-whatsapp" aria-hidden="true"></i> Solución empresarial</div>
             <h1 class="display-5 fw-bold mb-3">Centralice la atención de WhatsApp de su organización</h1>
             <p class="lead mb-4 opacity-90">Una plataforma diseñada para coordinar conversaciones, automatizar respuestas, gestionar campañas masivas y permitir que múltiples asesores trabajen sobre un mismo número de WhatsApp desde cualquier dispositivo.</p>
             <div class="d-flex flex-wrap gap-2">
-              <a href="#precios" class="btn btn-light btn-lg px-4"><i class="bi bi-tag me-2"></i>Ver planes</a>
+              <a href="#precios" class="btn btn-light btn-lg px-4"><i class="bi bi-tag me-2" aria-hidden="true"></i>Ver planes</a>
               <a href="../index.html#contact" class="btn btn-outline-light btn-lg px-4">Solicitar demostración</a>
             </div>
           </div>
           <div class="col-lg-6 d-none d-md-block" data-aos="fade-left" data-aos-delay="100">
             <div class="d-flex justify-content-center justify-content-lg-end pt-2">
-              <div class="wa-hero-composite">
-                <div class="laptop-device float-animation" style="z-index: 5">
+              <div class="wa-hero-composite wa-hero-composite--premium">
+                <div class="wa-float-metrics" aria-hidden="true">
+                  <div class="wa-float-metric wa-float-metric--tl">
+                    <i class="bi bi-chat-dots" aria-hidden="true"></i>
+                    <div><span class="fm-label">Conversaciones activas</span><strong>48</strong></div>
+                  </div>
+                  <div class="wa-float-metric wa-float-metric--tr">
+                    <i class="bi bi-cpu" aria-hidden="true"></i>
+                    <div><span class="fm-label">IA resolviendo</span><strong>12</strong></div>
+                  </div>
+                  <div class="wa-float-metric wa-float-metric--bl">
+                    <i class="bi bi-stopwatch" aria-hidden="true"></i>
+                    <div><span class="fm-label">Tiempo de respuesta</span><strong>2m 14s</strong></div>
+                  </div>
+                  <div class="wa-float-metric wa-float-metric--br">
+                    <i class="bi bi-person-check" aria-hidden="true"></i>
+                    <div><span class="fm-label">Asesores en línea</span><strong>7</strong></div>
+                  </div>
+                </div>
+                <div class="laptop-device laptop-device--premium float-animation" style="z-index: 5">
                   <div class="laptop-screen">
-                    <img
-                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&amp;fit=crop&amp;fm=jpg&amp;h=400&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=800"
-                      alt="Vista de panel, métricas y conversaciones en escritorio"
-                      width="800"
-                      height="400"
-                      loading="lazy"
-                      decoding="async"
-                    >
+                    <figure class="wa-laptop-screen-shot mb-0">
+                      <img
+                        src="../assets/img/masonry-portfolio/Whatsapp-API-img/Chats-PC.png"
+                        alt="Captura de la bandeja de chats en escritorio: lista de conversaciones y ventana de mensajes"
+                        width="1280"
+                        height="720"
+                        loading="eager"
+                        decoding="async"
+                      >
+                    </figure>
                   </div>
                   <div class="laptop-base"></div>
                   <div class="laptop-notch"></div>
                 </div>
-                <div class="position-absolute" style="bottom: -8px; left: -12px; z-index: 10; transform: rotate(-8deg);">
+                <div class="position-absolute wa-phone-layer float-delay" style="bottom: -8px; left: -12px; z-index: 10; transform: rotate(-8deg);">
                   <div class="pca-hold iphone-6 iphone-6--on mx-auto">
                     <div class="pca-main">
-                      <div
-                        class="pca-inner"
-                        style="
-                          background: #f8fafc;
-                          display: flex;
-                          flex-direction: column;
-                          padding: 18px 10px;
-                          color: #0f172a;
-                        "
-                      >
-                        <div style="margin-bottom: 12px">
-                          <div style="font-weight: 700; font-size: 0.95rem; line-height: 1.2">Bandeja compartida</div>
-                          <div style="height: 6px; background: #e2e8f0; border-radius: 3px; margin: 8px 0">
-                            <div style="width: 55%; height: 6px; background: var(--lp-primary); border-radius: 3px"></div>
-                          </div>
-                        </div>
-                        <div
-                          style="
-                            background: white;
-                            padding: 10px;
-                            border-radius: 12px;
-                            margin-bottom: 10px;
-                            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-                          "
+                      <div class="pca-inner wa-phone-shot-inner">
+                        <img
+                          class="wa-phone-shot-img"
+                          src="../assets/img/masonry-portfolio/Whatsapp-API-img/Chats-Movil.jpeg"
+                          alt="Captura de la bandeja de chats en dispositivo móvil"
+                          width="390"
+                          height="844"
+                          loading="lazy"
+                          decoding="async"
                         >
-                          <small style="color: var(--lp-gray); font-size: 0.62rem; text-transform: uppercase">Mensajes sin leer</small>
-                          <div style="font-weight: 600; font-size: 0.78rem; margin-top: 4px">12 conversaciones</div>
-                          <div style="display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap">
-                            <span
-                              style="
-                                background: var(--lp-soft);
-                                color: var(--lp-primary);
-                                padding: 2px 7px;
-                                border-radius: 20px;
-                                font-size: 0.58rem;
-                                font-weight: 600;
-                              "
-                              >prioridad</span
-                            >
-                            <span
-                              style="
-                                background: var(--lp-soft);
-                                color: var(--lp-primary);
-                                padding: 2px 7px;
-                                border-radius: 20px;
-                                font-size: 0.58rem;
-                                font-weight: 600;
-                              "
-                              >derivadas</span
-                            >
-                          </div>
-                        </div>
-                        <div style="background: white; padding: 10px; border-radius: 12px; margin-bottom: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05)">
-                          <small style="color: var(--lp-gray); font-size: 0.62rem; text-transform: uppercase">Último contacto</small>
-                          <div style="font-weight: 600; font-size: 0.78rem; margin-top: 4px">María G. · Ventas</div>
-                          <div style="font-size: 0.68rem; color: var(--lp-primary); margin-top: 4px">
-                            <i class="bi bi-whatsapp"></i> En línea con su equipo
-                          </div>
-                        </div>
-                        <button
-                          type="button"
-                          style="
-                            background: var(--lp-primary);
-                            color: white;
-                            border: none;
-                            padding: 10px;
-                            border-radius: 30px;
-                            font-weight: 600;
-                            font-size: 0.72rem;
-                            margin-top: auto;
-                            cursor: default;
-                          "
-                        >
-                          Abrir conversación
-                        </button>
                       </div>
                     </div>
                     <div class="pca-sub"><span class="pca-bot"></span></div>
@@ -498,7 +156,7 @@
       </div>
     </section>
 
-    <section id="coordinacion" class="section">
+    <section id="coordinacion" class="section wa-section-premium">
       <div class="container">
         <div class="row align-items-center gy-4">
           <div class="col-lg-6" data-aos="fade-right">
@@ -514,87 +172,97 @@
             </ul>
           </div>
           <div class="col-lg-6" data-aos="fade-left">
-            <div class="p-4 wa-glass-card">
-              <div class="d-flex align-items-center gap-3 mb-3">
-                <div class="rounded-circle bg-success bg-opacity-10 p-3"><i class="bi bi-inboxes fs-2 text-success"></i></div>
-                <div>
-                  <strong class="d-block">Un solo número, todo el equipo</strong>
-                  <span class="text-muted small">Visibilidad y continuidad sin perder mensajes entre dispositivos.</span>
-                </div>
-              </div>
-              <div class="d-flex align-items-center gap-3 mb-3">
-                <div class="rounded-circle bg-primary bg-opacity-10 p-3"><i class="bi bi-people fs-2 text-primary"></i></div>
-                <div>
-                  <strong class="d-block">Roles coordinados</strong>
-                  <span class="text-muted small">Varios asesores sobre el mismo canal con contexto compartido.</span>
-                </div>
-              </div>
-              <div class="d-flex align-items-center gap-3">
-                <div class="rounded-circle bg-warning bg-opacity-10 p-3"><i class="bi bi-clock-history fs-2 text-warning"></i></div>
-                <div>
-                  <strong class="d-block">Historial siempre disponible</strong>
-                  <span class="text-muted small">Seguimiento claro de lo conversado, sin depender de capturas.</span>
-                </div>
-              </div>
+            <div class="p-3 p-md-4 wa-glass-card wa-premium-card">
+              <p class="small fw-semibold text-uppercase mb-3 opacity-90" style="color: rgba(255,255,255,0.9); letter-spacing: 0.08em;">Atención por asesor en web</p>
+              <figure class="wa-screenshot-card mb-0">
+                <img
+                  src="../assets/img/masonry-portfolio/Whatsapp-API-img/Chat-Asesor-PC.png"
+                  alt="Interfaz de chat atendido por un asesor desde escritorio"
+                  width="1280"
+                  height="720"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </figure>
+              <ul class="list-unstyled small mt-3 mb-0 opacity-90 row g-2">
+                <li class="col-md-4"><i class="bi bi-check-circle-fill text-success me-1"></i>Un número, todo el equipo</li>
+                <li class="col-md-4"><i class="bi bi-check-circle-fill text-success me-1"></i>Roles coordinados</li>
+                <li class="col-md-4"><i class="bi bi-check-circle-fill text-success me-1"></i>Historial unificado</li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="automatizacion" class="section light-background">
+    <section id="automatizacion" class="section light-background wa-section-premium wa-section-premium--mesh">
       <div class="container">
         <div class="row gy-5 align-items-start">
           <div class="col-lg-6 order-lg-2" data-aos="fade-left">
-            <h2 class="wa-section-title">Automatización con supervisión de asesores</h2>
+            <h2 class="wa-section-title">Automatización controlada</h2>
             <p class="wa-section-intro mb-3">Las consultas frecuentes pueden resolverse automáticamente mediante IA contextual, reduciendo tiempos de respuesta y carga operativa.</p>
             <p class="mb-4">Cuando una conversación requiere atención personalizada, el sistema puede derivarla a un asesor manteniendo el contexto del hilo.</p>
             <p class="wa-muted-note mb-0">La automatización funciona como apoyo operativo para el equipo, permitiendo que los asesores se concentren en casos que realmente requieren atención personalizada.</p>
           </div>
           <div class="col-lg-6 order-lg-1" data-aos="fade-right">
-            <p class="small fw-semibold text-uppercase wa-subheading mb-2">Ejemplo de flujo · Modo automático</p>
+            <p class="small fw-semibold text-uppercase mb-2 wa-kicker">Conversación con asistente (IA)</p>
             <div class="wa-chat-demo mx-auto mx-lg-0">
-              <div class="wa-bubble-label">Cliente</div>
-              <div class="wa-bubble">¿Hay talleres disponibles este mes?</div>
-              <div class="wa-bubble-label text-end">Asistente</div>
-              <div class="wa-bubble bot">Sí, contamos con fechas disponibles. ¿Desea que le comparta los horarios?</div>
-              <div class="wa-bubble-label">Cliente</div>
-              <div class="wa-bubble">Prefiero hablar con un asesor.</div>
-              <div class="wa-bubble-label text-end">Sistema</div>
-              <div class="wa-bubble bot"><i class="bi bi-arrow-repeat me-1"></i>Derivando conversación a un asesor…</div>
+              <div class="wa-chat-msg-row" style="--stagger: 0;">
+                <div class="wa-bubble-label">Cliente</div>
+                <div class="wa-bubble">¿Hay talleres disponibles este mes?</div>
+              </div>
+              <div class="wa-chat-msg-row" style="--stagger: 1;">
+                <div class="wa-bubble-label text-end"><span class="wa-badge-ai"><i class="bi bi-stars"></i> IA</span> Asistente</div>
+                <div class="wa-bubble bot">Sí, contamos con fechas disponibles. ¿Desea que le comparta los horarios?</div>
+              </div>
+              <div class="wa-chat-msg-row" style="--stagger: 2;">
+                <div class="wa-bubble-label">Cliente</div>
+                <div class="wa-bubble">Prefiero hablar con un asesor.</div>
+              </div>
+              <div class="wa-chat-typing" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="wa-chat-msg-row" style="--stagger: 6;">
+                <div class="wa-bubble-label text-end"><span class="wa-badge-handoff"><i class="bi bi-arrow-left-right"></i> Derivación</span> Sistema</div>
+                <div class="wa-bubble bot"><i class="bi bi-arrow-repeat me-1" aria-hidden="true"></i>Asignando a Ventas · Martín (en línea)</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section wa-section-premium">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-10 text-center mb-5" data-aos="fade-up">
-            <h2 class="wa-section-title">Menos tiempo en preguntas repetitivas</h2>
+            <h2 class="wa-section-title">Ahorra tiempo en las preguntas repetitivas</h2>
             <p class="wa-section-intro mx-auto">Muchas organizaciones responden diariamente las mismas consultas desde distintos dispositivos y sin un registro centralizado.</p>
           </div>
         </div>
         <div class="row g-4">
           <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
-            <div class="p-4 h-100 wa-glass-card">
-              <i class="bi bi-robot fs-2 text-success mb-3 d-block"></i>
-              <h3 class="h5 fw-semibold">Automatizar respuestas frecuentes</h3>
+            <div class="p-4 h-100 wa-glass-card wa-premium-card">
+              <div class="wa-card-thumb">
+                <img src="../assets/img/masonry-portfolio/Whatsapp-API-img/Chat-Bot-Zoom-in-PC.png" alt="" width="640" height="400" loading="lazy" decoding="async">
+              </div>
+              <h3 class="h5 fw-semibold mt-2"><i class="bi bi-robot text-success me-2" aria-hidden="true"></i>Automatizar respuestas frecuentes</h3>
               <p class="mb-0 text-muted small">Respuestas coherentes y rápidas sin saturar al equipo.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
-            <div class="p-4 h-100 wa-glass-card">
-              <i class="bi bi-ui-checks-grid fs-2 text-success mb-3 d-block"></i>
-              <h3 class="h5 fw-semibold">Consistencia y priorización</h3>
+            <div class="p-4 h-100 wa-glass-card wa-premium-card">
+              <div class="wa-card-thumb">
+                <img src="../assets/img/masonry-portfolio/Whatsapp-API-img/Segmentos-Zoom-in-PC.png" alt="" width="640" height="400" loading="lazy" decoding="async">
+              </div>
+              <h3 class="h5 fw-semibold mt-2"><i class="bi bi-ui-checks-grid text-success me-2" aria-hidden="true"></i>Consistencia y priorización</h3>
               <p class="mb-0 text-muted small">Mantenga mensajes alineados y enfoque en conversaciones importantes.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="p-4 h-100 wa-glass-card">
-              <i class="bi bi-speedometer2 fs-2 text-success mb-3 d-block"></i>
-              <h3 class="h5 fw-semibold">Menos tiempo de atención</h3>
+            <div class="p-4 h-100 wa-glass-card wa-premium-card">
+              <div class="wa-card-thumb">
+                <img src="../assets/img/masonry-portfolio/Whatsapp-API-img/Chat-Hibrido-PC.png" alt="" width="640" height="400" loading="lazy" decoding="async">
+              </div>
+              <h3 class="h5 fw-semibold mt-2"><i class="bi bi-speedometer2 text-success me-2" aria-hidden="true"></i>Menos tiempo de atención</h3>
               <p class="mb-0 text-muted small">Reduzca fricción operativa y mejore la organización del equipo.</p>
             </div>
           </div>
@@ -607,160 +275,174 @@
       </div>
     </section>
 
-    <section id="campanas" class="section light-background">
+    <section id="campanas" class="section light-background wa-section-premium wa-section-premium--mesh">
       <div class="container">
         <div class="row gy-4">
           <div class="col-lg-6" data-aos="fade-right">
-            <h2 class="wa-section-title">Campañas masivas con mayor control</h2>
-            <p class="wa-section-intro mb-4">Gestione campañas masivas desde una sola plataforma y evite depender de listas dispersas o envíos manuales sin seguimiento.</p>
-            <h3 class="h6 text-uppercase wa-subheading mb-3">La plataforma permite</h3>
+            <h2 class="wa-section-title">Campañas masivas sin bloqueos</h2>
+            <p class="wa-section-intro mb-4">Olvidate de listas sueltas, envíos manuales sin seguimiento y bloqueos de WhatsApp por SPAM.</p>
+            <h3 class="h6 text-uppercase mb-3 wa-kicker">La plataforma permite</h3>
             <ul class="list-unstyled wa-icon-list">
-              <li><i class="bi bi-check-circle-fill"></i>Importación masiva de contactos</li>
-              <li><i class="bi bi-check-circle-fill"></i>Segmentación mediante etiquetas</li>
-              <li><i class="bi bi-check-circle-fill"></i>Organización por categorías</li>
-              <li><i class="bi bi-check-circle-fill"></i>Envío de campañas masivas con plantillas</li>
+              <li><i class="bi bi-check-circle-fill"></i>Evitar bloqueos de WhatsApp por exceso de envíos manuales.</li>
+              <li><i class="bi bi-check-circle-fill"></i>Enviar hasta 2000 mensajes masivos al día*.</li>
+              <li><i class="bi bi-check-circle-fill"></i>Importación masiva de contactos desde Excel.</li>
+              <li><i class="bi bi-check-circle-fill"></i>Segmentación mediante etiquetas y categorías.</li>
+              <li><i class="bi bi-check-circle-fill"></i>Envío de campañas masivas con plantillas de Meta.</li>
             </ul>
           </div>
           <div class="col-lg-6" data-aos="fade-left">
-            <div class="wa-phone-mali-wrap mx-auto mb-4 mb-lg-5">
-              <div class="pca-hold iphone-6 iphone-6--on float-animation mx-auto">
-                <div class="pca-main">
-                  <div
-                    class="pca-inner"
-                    style="
-                      background: #f8fafc;
-                      display: flex;
-                      flex-direction: column;
-                      padding: 20px 12px;
-                    "
+            <div class="row align-items-end g-3 g-md-4 wa-campaign-visuals">
+              <div class="col-7 col-md-8">
+                <figure class="wa-screenshot-card mb-0" style="border-color: rgba(15,23,42,0.08); box-shadow: 0 16px 40px rgba(15,23,42,0.08);">
+                  <img
+                    src="../assets/img/masonry-portfolio/Whatsapp-API-img/NuevaCampaña-PC.png"
+                    alt="Formulario de nueva campaña en escritorio"
+                    width="1280"
+                    height="720"
+                    loading="lazy"
+                    decoding="async"
                   >
-                    <div style="margin-bottom: 16px">
-                      <div style="font-weight: 700; font-size: 1.1rem; color: #0f172a">Nueva campaña</div>
-                      <div style="height: 6px; background: #e2e8f0; border-radius: 3px; margin: 8px 0">
-                        <div style="width: 60%; height: 6px; background: var(--lp-primary); border-radius: 3px"></div>
-                      </div>
-                    </div>
-                    <div
-                      style="
-                        background: white;
-                        padding: 12px;
-                        border-radius: 12px;
-                        margin-bottom: 12px;
-                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-                      "
-                    >
-                      <small style="color: var(--lp-gray)">Plantilla sincronizada</small>
-                      <div style="font-weight: 600; color: #0f172a">ofertas_educacion</div>
-                      <div style="display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap">
-                        <span
-                          style="
-                            background: var(--lp-soft);
-                            color: var(--lp-primary);
-                            padding: 2px 8px;
-                            border-radius: 20px;
-                            font-size: 0.7rem;
-                          "
-                          >cabecera</span
-                        >
-                        <span
-                          style="
-                            background: var(--lp-soft);
-                            color: var(--lp-primary);
-                            padding: 2px 8px;
-                            border-radius: 20px;
-                            font-size: 0.7rem;
-                          "
-                          >cuerpo</span
+                </figure>
+              </div>
+              <div class="col-5 col-md-4 d-flex justify-content-center justify-content-md-end align-items-end">
+                <div class="wa-phone-mali-wrap mb-0 wa-phone-mali-wrap--inline">
+                  <div class="pca-hold iphone-6 iphone-6--on float-animation mx-auto mx-md-0">
+                    <div class="pca-main">
+                      <div class="pca-inner wa-phone-shot-inner">
+                        <img
+                          class="wa-phone-shot-img"
+                          src="../assets/img/masonry-portfolio/Whatsapp-API-img/NuevaCampaña-Movil.jpeg"
+                          alt="Nueva campaña en vista móvil"
+                          width="390"
+                          height="844"
+                          loading="lazy"
+                          decoding="async"
                         >
                       </div>
                     </div>
-                    <div style="background: white; padding: 12px; border-radius: 12px; margin-bottom: 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05)">
-                      <small style="color: var(--lp-gray)">Segmento</small>
-                      <div style="font-weight: 600; color: #0f172a">Educación</div>
-                      <div style="font-size: 0.8rem; color: var(--lp-primary); margin-top: 4px">
-                        <i class="bi bi-tag"></i> contactos del segmento elegido
-                      </div>
-                    </div>
-                    <button
-                      type="button"
-                      style="
-                        background: var(--lp-primary);
-                        color: white;
-                        border: none;
-                        padding: 12px;
-                        border-radius: 30px;
-                        font-weight: 600;
-                        margin-top: auto;
-                        cursor: default;
-                      "
-                    >
-                      Programar envío
-                    </button>
+                    <div class="pca-sub"><span class="pca-bot"></span></div>
                   </div>
                 </div>
-                <div class="pca-sub"><span class="pca-bot"></span></div>
               </div>
-            </div>
-            <div class="p-4 wa-glass-card wa-glass-card--sm">
-              <h3 class="h6 text-uppercase wa-subheading mb-3">Cada campaña puede mostrar</h3>
-              <ul class="list-unstyled wa-icon-list small mb-0">
-                <li><i class="bi bi-send-check-fill"></i>Cantidad de mensajes enviados</li>
-                <li><i class="bi bi-check2-all"></i>Estados de entrega</li>
-                <li><i class="bi bi-chat-dots-fill"></i>Respuestas obtenidas</li>
-                <li><i class="bi bi-exclamation-triangle-fill text-warning"></i>Errores de envío</li>
-              </ul>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <!-- Indicadores: texto + vista compacta de captura -->
+    <section id="metricas" class="section light-background wa-section-premium wa-section-premium--mesh">
       <div class="container">
         <div class="row align-items-center gy-4">
           <div class="col-lg-6" data-aos="fade-right">
-            <h2 class="wa-section-title">Una bandeja compartida para todo el equipo</h2>
-            <p class="wa-section-intro mb-4">Cuando varias personas atienden el mismo número de WhatsApp, suele ser difícil saber quién respondió o qué conversaciones quedaron pendientes.</p>
-            <p class="mb-3 fw-semibold">La bandeja compartida permite:</p>
-            <ul class="list-unstyled wa-icon-list">
-              <li><i class="bi bi-check-circle-fill"></i>Visualizar conversaciones en tiempo real</li>
-              <li><i class="bi bi-check-circle-fill"></i>Priorizar mensajes no leídos</li>
-              <li><i class="bi bi-check-circle-fill"></i>Filtrar conversaciones automáticas o derivadas a asesores</li>
-              <li><i class="bi bi-check-circle-fill"></i>Mantener continuidad entre áreas o turnos</li>
-            </ul>
-            <p class="mt-3 mb-0 wa-muted-note">Todo el equipo trabaja sobre un mismo entorno compartido.</p>
+            <h2 class="wa-section-title">Indicadores para un mejor seguimiento</h2>
+            <p class="wa-section-intro mb-3 mb-lg-4">Siga los envíos correctos, lecturas y errores de los envíos de campañas masivas.</p>
+            <p class="mb-0 wa-muted-note small">Los datos reales dependen del plan y la configuración.</p>
           </div>
           <div class="col-lg-6" data-aos="fade-left">
-            <div class="wa-glass-card wa-bandej-preview d-flex align-items-center justify-content-center p-5">
-              <div class="text-center">
-                <i class="bi bi-layout-sidebar-reverse display-4 text-success mb-3"></i>
-                <p class="mb-0 fw-medium">Bandeja unificada · filtros · estados en vivo</p>
-              </div>
+            <div class="wa-dash-panel wa-metricas-dash-compact ms-lg-auto">
+              <header class="wa-dash-header">
+                <div>
+                  <h3 class="wa-dash-title mb-0">Campañas e indicadores</h3>
+                  <p class="wa-dash-meta mb-0 mt-1">En escritorio</p>
+                </div>
+              </header>
+              <figure class="wa-dash-shot mb-0">
+                <img
+                  src="../assets/img/masonry-portfolio/Whatsapp-API-img/Campañas+indicadores-PC.png"
+                  alt="Panel con métricas de campañas e indicadores operativos"
+                  width="1280"
+                  height="720"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </figure>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="experiencia" class="section light-background">
+    <!-- Bandeja: texto introductorio + captura destacada ancha -->
+    <section id="inbox" class="section">
+      <div class="container">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-10 col-xl-9 text-center" data-aos="fade-up">
+            <h2 class="wa-section-title">Un WhatsApp, varios usuarios, mucha conversaciones</h2>
+            <p class="wa-section-intro mx-auto mb-4">Cuando varias personas atienden el mismo número de WhatsApp, suele ser difícil saber quién respondió o qué conversaciones quedaron pendientes.</p>
+            <p class="mb-3 fw-semibold">La bandeja compartida permite:</p>
+            <ul class="list-unstyled wa-icon-list wa-inbox-feature-list text-start mx-auto mb-0">
+              <li><i class="bi bi-check-circle-fill"></i>Visualizar conversaciones en tiempo real</li>
+              <li><i class="bi bi-check-circle-fill"></i>Priorizar mensajes no leídos</li>
+              <li><i class="bi bi-check-circle-fill"></i>Filtrar conversaciones por segmentos o etiquetas.</li>
+              <li><i class="bi bi-check-circle-fill"></i>Mantener continuidad entre áreas y turnos</li>
+            </ul>
+            <p class="mt-3 mb-0 wa-muted-note">Todo el equipo trabaja sobre la misma bandeja de WhatsApp con filtros claros.</p>
+          </div>
+        </div>
+        <div class="wa-dash-panel" data-aos="fade-up" data-aos-delay="80">
+          <header class="wa-dash-header">
+            <div>
+              <h3 class="wa-dash-title mb-0">Bandeja compartida</h3>
+              <p class="wa-dash-meta mb-0 mt-1">En escritorio</p>
+            </div>
+            <div class="d-flex flex-wrap gap-2 justify-content-lg-end align-items-center pt-2 pt-lg-0">
+              <span class="badge rounded-pill bg-success-subtle text-success-emphasis border">No leídos</span>
+              <span class="badge rounded-pill bg-primary-subtle text-primary-emphasis border">Derivadas IA</span>
+              <span class="badge rounded-pill bg-secondary-subtle text-secondary-emphasis border">Ventas</span>
+            </div>
+          </header>
+          <figure class="wa-dash-shot mb-0">
+            <img
+              src="../assets/img/masonry-portfolio/Whatsapp-API-img/Chats-PC.png"
+              alt="Bandeja compartida en escritorio: lista de chats y conversación abierta"
+              width="1280"
+              height="720"
+              loading="lazy"
+              decoding="async"
+            >
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="interfaz" class="section light-background wa-section-premium wa-section-premium--mesh">
       <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
-          <h2 class="wa-section-title">Experiencia familiar y adaptable</h2>
-          <p class="wa-section-intro mx-auto">La interfaz mantiene una distribución inspirada en WhatsApp para facilitar la adopción y reducir la curva de aprendizaje.</p>
+          <h2 class="wa-section-title">Muy intuitiva y familiar</h2>
+          <p class="wa-section-intro mx-auto">La interfaz de usuario está inspirada WhatsApp para facilitar el uso y reducir la curva de aprendizaje.</p>
         </div>
         <div class="row g-4">
           <div class="col-md-6" data-aos="fade-up">
-            <div class="p-4 wa-glass-card h-100 text-center">
-              <i class="bi bi-pc-display-horizontal fs-1 text-primary mb-3"></i>
-              <h3 class="h5 fw-semibold">En escritorio</h3>
-              <p class="mb-0 text-muted">Una experiencia cercana a WhatsApp Web para facilitar el trabajo del equipo.</p>
+            <div class="p-4 wa-glass-card wa-premium-card h-100">
+              <figure class="wa-exp-shot wa-exp-shot--interfaz mb-3">
+                <img
+                  src="../assets/img/masonry-portfolio/Whatsapp-API-img/Chats-Zoom-in-PC.png"
+                  alt="Interfaz de escritorio tipo WhatsApp Web con lista de chats"
+                  width="960"
+                  height="540"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </figure>
+              <h3 class="h5 fw-semibold"><i class="bi bi-pc-display-horizontal text-primary me-2" aria-hidden="true"></i>En escritorio</h3>
+              <p class="mb-0 text-muted small">Vista tipo WhatsApp Web.</p>
             </div>
           </div>
           <div class="col-md-6" data-aos="fade-up" data-aos-delay="80">
-            <div class="p-4 wa-glass-card h-100 text-center">
-              <i class="bi bi-phone fs-1 text-success mb-3"></i>
-              <h3 class="h5 fw-semibold">En móvil</h3>
-              <p class="mb-0 text-muted">Interfaz responsiva adaptada a teléfonos y tablets, inspirada en la app móvil de WhatsApp.</p>
+            <div class="p-4 wa-glass-card wa-premium-card h-100">
+              <figure class="wa-exp-shot wa-exp-shot--interfaz mb-3">
+                <img
+                  src="../assets/img/masonry-portfolio/Whatsapp-API-img/Chats-Zoom-in-Movil.jpeg"
+                  alt="Interfaz móvil con lista de conversaciones"
+                  width="390"
+                  height="844"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </figure>
+              <h3 class="h5 fw-semibold"><i class="bi bi-phone text-success me-2" aria-hidden="true"></i>En celular</h3>
+              <p class="mb-0 text-muted small">Vista tipo WhatsApp App.</p>
             </div>
           </div>
         </div>
@@ -771,20 +453,37 @@
       <div class="container">
         <div class="row gy-4">
           <div class="col-lg-6" data-aos="fade-right">
-            <h2 class="wa-section-title">Segmentación más clara de contactos y conversaciones</h2>
-            <p class="wa-section-intro mb-0">Organice contactos mediante etiquetas y categorías personalizadas para identificar clientes potenciales, conversaciones prioritarias, estados de seguimiento, campañas específicas o distintos tipos de atención.</p>
-          </div>
+            <h2 class="wa-section-title">Segmentos y Clientes</h2>
+            <p class="wa-section-intro mb-3">Organice contactos mediante calificaciones, tags y categorías personalizadas para identificar clientes y brindar distintos tipos de atención.</p>
+            <ul class="list-unstyled wa-icon-list">
+                <li><i class="bi bi-check-circle-fill"></i>Importación masiva de contactos desde Excel.</li>
+                <li><i class="bi bi-check-circle-fill"></i>Segmentación mediante etiquetas (TAGS) y categorías.</li>
+                <li><i class="bi bi-check-circle-fill"></i>Manejo de calificaciones del Lead (cliente potencial) desde 1 a 5 estrellas.</li>
+            </ul>
+        </div>
           <div class="col-lg-6" data-aos="fade-left">
-            <div class="p-4 wa-glass-card">
-              <p class="mb-3">Esto permite mantener campañas más organizadas y conversaciones más claras para el equipo.</p>
-              <div class="d-flex flex-wrap gap-2">
-                <span class="badge rounded-pill bg-success-subtle text-success-emphasis border">Clientes potenciales</span>
-                <span class="badge rounded-pill bg-danger-subtle text-danger-emphasis border">Prioritario</span>
-                <span class="badge rounded-pill bg-primary-subtle text-primary-emphasis border">Seguimiento</span>
-                <span class="badge rounded-pill bg-secondary-subtle text-secondary-emphasis border">Campaña</span>
+            <div class="p-4 wa-glass-card wa-premium-card">
+              <div class="wa-tags-panel mb-3">
+                <div class="wa-tags-panel-head">Etiquetas Tags y calificaciones · Vista Web</div>
+                <figure class="wa-screenshot-card mb-3">
+                  <img
+                    src="../assets/img/masonry-portfolio/Whatsapp-API-img/Segmentos-PC.png"
+                    alt="Gestión de segmentos y etiquetas en escritorio"
+                    width="1280"
+                    height="720"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </figure>
+                <div class="d-flex flex-wrap gap-2 mb-3">
+                  <span class="badge rounded-pill bg-success-subtle text-success-emphasis border">Clientes potenciales</span>
+                  <span class="badge rounded-pill bg-danger-subtle text-danger-emphasis border">Prioritario</span>
+                  <span class="badge rounded-pill bg-primary-subtle text-primary-emphasis border">Seguimiento</span>
+                  <span class="badge rounded-pill bg-secondary-subtle text-secondary-emphasis border">Campaña</span>
+                </div>
               </div>
             </div>
-          </div>
+         </div>
         </div>
       </div>
     </section>
@@ -793,13 +492,13 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-9 text-center" data-aos="fade-up">
-            <h2 class="wa-section-title">Atención continua sin perder contexto</h2>
+            <h2 class="wa-section-title">Atención continua sin repetir preguntas</h2>
             <p class="wa-section-intro mx-auto mb-4">Las respuestas automáticas y la atención por asesores permanecen dentro del mismo hilo conversacional.</p>
             <div class="row g-3 text-start">
-              <div class="col-sm-6 col-md-3"><div class="p-3 wa-glass-card wa-glass-card--sm h-100"><i class="bi bi-link-45deg text-success me-2"></i>Mantener contexto entre interacciones</div></div>
-              <div class="col-sm-6 col-md-3"><div class="p-3 wa-glass-card wa-glass-card--sm h-100"><i class="bi bi-shield-check text-success me-2"></i>Reducir errores</div></div>
-              <div class="col-sm-6 col-md-3"><div class="p-3 wa-glass-card wa-glass-card--sm h-100"><i class="bi bi-arrow-repeat text-success me-2"></i>Mejorar continuidad</div></div>
-              <div class="col-sm-6 col-md-3"><div class="p-3 wa-glass-card wa-glass-card--sm h-100"><i class="bi bi-award text-success me-2"></i>Atención más profesional</div></div>
+              <div class="col-sm-6 col-md-3"><div class="p-3 wa-glass-card wa-glass-card--sm wa-premium-card h-100 d-flex align-items-start"><span class="wa-mini-halo-icon"><i class="bi bi-link-45deg"></i></span><span>Mantener contexto entre interacciones</span></div></div>
+              <div class="col-sm-6 col-md-3"><div class="p-3 wa-glass-card wa-glass-card--sm wa-premium-card h-100 d-flex align-items-start"><span class="wa-mini-halo-icon"><i class="bi bi-shield-check"></i></span><span>Reducir errores</span></div></div>
+              <div class="col-sm-6 col-md-3"><div class="p-3 wa-glass-card wa-glass-card--sm wa-premium-card h-100 d-flex align-items-start"><span class="wa-mini-halo-icon"><i class="bi bi-arrow-repeat"></i></span><span>Mejorar continuidad</span></div></div>
+              <div class="col-sm-6 col-md-3"><div class="p-3 wa-glass-card wa-glass-card--sm wa-premium-card h-100 d-flex align-items-start"><span class="wa-mini-halo-icon"><i class="bi bi-award"></i></span><span>Atención más profesional</span></div></div>
             </div>
           </div>
         </div>
@@ -808,15 +507,15 @@
 
     <section class="section">
       <div class="container">
-        <div class="p-5 wa-glass-card text-center" data-aos="zoom-in">
+        <div class="p-5 wa-glass-card wa-premium-card text-center" data-aos="zoom-in">
           <i class="bi bi-building-check fs-1 text-success mb-3 d-block"></i>
-          <h2 class="wa-section-title mb-3">Diseñado para organizaciones y equipos</h2>
+          <h2 class="wa-section-title mb-3">Diseñado para organizaciones grandes y pequeñas</h2>
           <p class="wa-org-blurb mb-0">La plataforma está orientada a empresas, instituciones educativas, áreas administrativas y equipos que necesitan coordinar atención por WhatsApp de manera más profesional, organizada y escalable.</p>
         </div>
       </div>
     </section>
 
-    <section id="precios" class="pricing section">
+    <section id="precios" class="pricing section wa-section-premium">
       <div class="container section-title" data-aos="fade-up">
         <h2>Precios</h2>
         <p>Planes que se adaptan a tu empresa</p>
@@ -917,12 +616,12 @@
                 </tr>
               </thead>
               <tbody>
-                <tr><td>📱 Número adicional</td><td class="text-end">S/ 50</td></tr>
-                <tr><td>👤 Asesor adicional</td><td class="text-end">S/ 15</td></tr>
-                <tr><td>🤖 Capacidad adicional de IA</td><td class="text-end">S/ 80</td></tr>
-                <tr><td>🌐 Dominio propio</td><td class="text-end">S/ 100</td></tr>
-                <tr><td>⚙️ Configuración adicional</td><td class="text-end">S/ 100</td></tr>
-                <tr><td>🚀 Soporte prioritario</td><td class="text-end">S/ 50</td></tr>
+                <tr><td>📱 Número de WhatsApp adicional</td><td class="text-end">S/ 50</td></tr>
+                <tr><td>👤 Usuario (Asesor) adicional</td><td class="text-end">S/ 15</td></tr>
+                <tr><td>🤖 Capacidad de IA adicional</td><td class="text-end">S/ 80</td></tr>
+                <tr><td>🌐 Dominio propio adicional</td><td class="text-end">S/ 100</td></tr>
+                <tr><td>⚙️ Configuración adicional de Meta Business</td><td class="text-end">S/ 100</td></tr>
+                <tr><td>🚀 Soporte prioritario adicional</td><td class="text-end">S/ 50</td></tr>
               </tbody>
             </table>
           </div>
@@ -953,11 +652,16 @@
         <div class="wa-cta-final" data-aos="fade-up">
           <h2 class="h3 fw-bold mb-3">Solicite una demostración</h2>
           <p class="lead mb-4 col-lg-8 mx-auto opacity-90">Descubra cómo centralizar la atención de WhatsApp de su organización, coordinar a su equipo y automatizar respuestas desde una sola plataforma.</p>
-          <a href="../index.html#contact" class="btn btn-light btn-lg px-5 me-2 mb-2"><i class="bi bi-calendar-check me-2"></i>Agendar contacto</a>
-          <a href="https://wa.me/51928581354?text=Hola%2C%20quiero%20una%20demostración%20de%20la%20plataforma%20WhatsApp" class="btn btn-outline-light btn-lg px-5 mb-2" target="_blank" rel="noopener"><i class="bi bi-whatsapp me-2"></i>WhatsApp</a>
+          <a href="https://wa.me/51928581354?text=Hola%2C%20quiero%20una%20demostración%20de%20la%20plataforma%20WhatsApp" class="btn btn-outline-light btn-lg px-5 mb-2" target="_blank" rel="noopener"><i class="bi bi-whatsapp me-2"></i>Hablar porWhatsApp</a>
         </div>
       </div>
     </section>
+
+    <!-- CTA sticky solo móvil: demo + WhatsApp -->
+    <aside class="wa-mobile-sticky-cta d-lg-none" aria-label="Acciones rápidas">
+      <a href="../index.html#contact" class="btn btn-wa-demo">Solicitar demo</a>
+      <a href="https://wa.me/51928581354?text=Hola%2C%20quiero%20una%20demostraci%C3%B3n%20de%20la%20plataforma%20WhatsApp" class="btn btn-wa-chat" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+    </aside>
   </main>
 
   <footer id="footer" class="footer dark-background"><div class="container"><h3 class="sitename">Crearttech</h3><p>Impulsamos tu empresa con soluciones tecnológicas modernas y eficientes. Transformamos ideas en realidades digitales que optimizan recursos y mejoran la productividad empresarial.</p><div class="social-links d-flex justify-content-center"><a href="https://wa.me/51928581354" target="_blank" rel="noopener" title="WhatsApp"><i class="bi bi-whatsapp"></i></a><a href="https://facebook.com/crearttech" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a><a href="https://instagram.com/crearttech" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a><a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a><a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a></div><div class="container"><div class="copyright"><span>Copyright &copy; 2025</span> <strong class="px-1 sitename">Crearttech Solutions S.A.C.</strong> <span>| All Rights Reserved</span></div><div class="credits">Designed by <a href="https://creart.tech/">Crearttech</a></div></div></div></footer>
@@ -971,5 +675,24 @@
   <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="../assets/js/main.js"></script>
+  <script>
+    /* Ocultar ondas al llegar al footer (igual que index.html) */
+    (function () {
+      var waves = document.querySelector('.wa-landing .hero-waves.wa-viewport-waves');
+      var footer = document.querySelector('#footer');
+      if (!waves || !footer || !('IntersectionObserver' in window)) return;
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          waves.classList.toggle('wave-hidden', entry.isIntersecting);
+        });
+      }, {
+        root: null,
+        threshold: 0.05
+      });
+
+      observer.observe(footer);
+    })();
+  </script>
 </body>
 </html>
