@@ -80,13 +80,19 @@
   });
 
   /**
-   * Toggle mobile nav dropdowns
+   * Toggle mobile nav dropdowns (sub-<ul> hijo directo del li.dropdown; más robusto que nextElementSibling)
    */
-  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    navmenu.addEventListener('click', function(e) {
+  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(function (toggle) {
+    toggle.addEventListener('click', function (e) {
       e.preventDefault();
-      this.parentNode.classList.toggle('active');
-      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
+      const li = this.closest('li.dropdown');
+      if (!li) return;
+      /* Primer <ul> descendiente = submenú directo de este li (evita :scope por compatibilidad) */
+      const submenu = li.querySelector('ul');
+      const link = this.closest('a');
+      if (!submenu) return;
+      if (link) link.classList.toggle('active');
+      submenu.classList.toggle('dropdown-active');
       e.stopImmediatePropagation();
     });
   });

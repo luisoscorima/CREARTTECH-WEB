@@ -346,12 +346,16 @@ h6 {
   }
 
   .navmenu ul {
-    display: none;
     list-style: none;
+    margin: 0;
+  }
+
+  /* Solo el panel principal: absolute + inset (no aplica a ul internos de dropdowns) */
+  .navmenu > ul {
+    display: none;
     position: absolute;
     inset: 60px 20px 20px 20px;
     padding: 10px 0;
-    margin: 0;
     border-radius: 6px;
     background-color: var(--nav-mobile-background-color);
     overflow-y: auto;
@@ -409,20 +413,40 @@ h6 {
     transform: rotate(180deg);
   }
 
+  /*
+    .navmenu ul más abajo aplica position:absolute + inset → si este ul pasara a relative,
+    el mismo inset desplazaría la lista muy abajo. Por eso inset: auto y sin position relative aquí.
+  */
   .navmenu .dropdown ul {
     position: static;
+    inset: auto;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
     display: none;
     z-index: 99;
-    padding: 10px 0;
-    margin: 10px 20px;
+    padding: 8px 0;
+    margin: 4px 0 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
     background-color: var(--nav-dropdown-background-color);
     border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    border-radius: 8px;
     box-shadow: none;
     transition: all 0.5s ease-in-out;
   }
 
   .navmenu .dropdown ul ul {
-    background-color: rgba(33, 37, 41, 0.1);
+    position: static;
+    inset: auto;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    background-color: rgba(33, 37, 41, 0.12);
+    margin-top: 4px;
   }
 
   .navmenu .dropdown>.dropdown-active {
@@ -446,14 +470,86 @@ h6 {
 
   .mobile-nav-active .navmenu {
     position: fixed;
-    overflow: hidden;
+    /* hidden recortaba los submenús desplegables (Servicios → Software a Medida, etc.) */
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
     inset: 0;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
     background: rgba(33, 37, 41, 0.8);
     transition: 0.3s;
+    -webkit-overflow-scrolling: touch;
   }
 
   .mobile-nav-active .navmenu>ul {
     display: block;
+  }
+
+  /* Panel principal a ancho completo (sin huecos laterales tipo tarjeta flotante) */
+  .mobile-nav-active .navmenu > ul {
+    inset: 52px 0 max(12px, env(safe-area-inset-bottom, 12px)) 0;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 8px 0 max(12px, env(safe-area-inset-bottom));
+    border-radius: 12px 12px 0 0;
+    left: 0;
+    right: 0;
+  }
+
+  /* Ítems raíz alineados; texto puede partir línea en pantallas estrechas */
+  .mobile-nav-active .navmenu > ul > li > a {
+    padding: 12px 18px;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  /* Primer nivel de submenú (Servicios): mismo ancho que el panel */
+  .mobile-nav-active .navmenu .dropdown > ul > li > a {
+    padding: 10px 18px 10px 22px;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  /* Segundo nivel (Software a Medida → portafolio): solo sangría en el texto, no cajas más estrechas */
+  .mobile-nav-active .navmenu .dropdown .dropdown > ul > li > a {
+    padding: 10px 18px 10px 28px;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .mobile-nav-active .navmenu > ul > li {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Por encima de WhatsApp flotante / scroll-top (99999), barra scroll (10000) y cualquier .fixed-top de Bootstrap */
+  body.mobile-nav-active #header.header {
+    z-index: 100002 !important;
+  }
+
+  /*
+    backdrop-filter en .header crea bloque de referencia: el nav fijo no cubre el viewport completo
+    y los desplegables parecen quedar “detrás” del contenido. Lo quitamos solo con menú abierto.
+  */
+  body.mobile-nav-active .header {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    overflow: visible;
+  }
+
+  body.mobile-nav-active #header .container-fluid,
+  body.mobile-nav-active #header .container-xl {
+    overflow: visible;
+  }
+
+  /* Mismo flujo que el resto de ítems: static, sin relative (evita activar inset heredado de .navmenu ul) */
+  .mobile-nav-active .navmenu .dropdown ul,
+  .mobile-nav-active .navmenu .dropdown ul ul {
+    position: static;
+    inset: auto;
   }
 }
 

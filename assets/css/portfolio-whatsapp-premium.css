@@ -7,6 +7,15 @@
 /* --------------------------------------------------------------------------
    Tokens y utilidades base
    -------------------------------------------------------------------------- */
+/*
+  Index no usa .light-background: las secciones heredan fondo transparente y se ve el mismo degradado global.
+  Aquí .light-background imponía --background-color: #12121a (main.css) → franjas negras alternas.
+  Neutralizamos solo en esta landing para un fondo continuo; los ::before de .wa-section-premium siguen dando matiz.
+*/
+.wa-landing section.light-background {
+  --background-color: transparent;
+}
+
 .wa-landing {
   --wa-green: #25d366;
   --wa-green-dark: #128c7e;
@@ -29,11 +38,12 @@
 /* --------------------------------------------------------------------------
    1) Fondos premium — blobs, radial, noise (performance: sin JS)
    -------------------------------------------------------------------------- */
+/* Como index #hero: sin capa negra; el fondo global (#site-bg-animation) se ve continuo */
 .wa-hero.wa-hero--premium {
-  background:
-    radial-gradient(ellipse 90% 65% at 15% 20%, rgba(37, 211, 102, 0.35) 0%, transparent 52%),
-    radial-gradient(ellipse 70% 55% at 85% 75%, rgba(18, 140, 126, 0.45) 0%, transparent 50%),
-    linear-gradient(145deg, #064e45 0%, #0d7a6b 38%, #123d34 100%);
+  background-color: transparent;
+  background-image:
+    radial-gradient(ellipse 80% 55% at 20% 20%, rgba(139, 92, 246, 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 45% at 85% 75%, rgba(59, 130, 246, 0.1) 0%, transparent 52%);
   isolation: isolate;
   color: #fff;
   padding: 8rem 0 5rem;
@@ -41,11 +51,47 @@
   overflow: visible;
 }
 
+/* Panel glass: contenido del hero sobre vidrio esmerilado */
+.wa-landing .wa-hero-glass.glass-panel {
+  position: relative;
+  z-index: 2;
+  border-radius: var(--wa-premium-radius-lg);
+  padding: 1.5rem 1.25rem;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 12px 48px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.wa-landing .wa-hero-glass.glass-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.07) 0%, transparent 42%);
+}
+
+@media (min-width: 576px) {
+  .wa-landing .wa-hero-glass.glass-panel {
+    padding: 2rem 1.75rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .wa-landing .wa-hero-glass.glass-panel {
+    padding: 2.75rem 2.5rem;
+  }
+}
+
 .wa-hero-blobs {
   position: absolute;
   inset: -10% -5% -15%;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1; /* por encima del ::after (rejilla) */
   overflow: hidden;
 }
 
@@ -55,14 +101,14 @@
   position: absolute;
   border-radius: 50%;
   filter: blur(72px);
-  opacity: 0.55;
+  opacity: 0.38;
   will-change: transform;
 }
 
 .wa-hero-blobs::before {
   width: min(52vw, 420px);
   height: min(52vw, 420px);
-  background: radial-gradient(circle, rgba(92, 246, 164, 0.55) 0%, transparent 68%);
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.28) 0%, transparent 68%);
   top: -8%;
   right: 5%;
   animation: wa-blob-drift 22s var(--wa-transition-premium) infinite;
@@ -71,7 +117,7 @@
 .wa-hero-blobs::after {
   width: min(45vw, 360px);
   height: min(45vw, 360px);
-  background: radial-gradient(circle, rgba(37, 211, 102, 0.35) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(71, 85, 105, 0.35) 0%, transparent 70%);
   bottom: 5%;
   left: -5%;
   animation: wa-blob-drift 26s var(--wa-transition-premium) infinite reverse;
@@ -87,14 +133,19 @@
   inset: 0;
   opacity: 0.035;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .wa-hero.wa-hero--premium::after {
-  opacity: 0.85;
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
   background-image:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, transparent 40%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, transparent 42%),
     url("data:image/svg+xml,%3Csvg width='72' height='72' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 36h72M36 0v72' stroke='%23ffffff' stroke-opacity='0.055' stroke-width='1'/%3E%3C/svg%3E");
 }
 
@@ -110,8 +161,8 @@
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 55% 40% at 90% 10%, rgba(37, 211, 102, 0.07) 0%, transparent 55%),
-    radial-gradient(ellipse 45% 35% at 10% 90%, rgba(13, 110, 92, 0.06) 0%, transparent 50%);
+    radial-gradient(ellipse 55% 40% at 90% 10%, rgba(139, 92, 246, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 35% at 10% 90%, rgba(30, 41, 59, 0.12) 0%, transparent 50%);
   z-index: 0;
 }
 
@@ -122,8 +173,8 @@
 
 .wa-section-premium--mesh.light-background::before {
   background:
-    radial-gradient(ellipse 60% 45% at 50% 0%, rgba(37, 211, 102, 0.06) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 40% at 100% 100%, rgba(13, 110, 92, 0.05) 0%, transparent 45%);
+    radial-gradient(ellipse 60% 45% at 50% 0%, rgba(139, 92, 246, 0.05) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 100% 100%, rgba(148, 163, 184, 0.08) 0%, transparent 45%);
 }
 
 /* --------------------------------------------------------------------------
@@ -185,6 +236,12 @@ body.wa-landing #footer {
   z-index: 2;
 }
 
+/* Texto y CTAs por encima del brillo ::before del glass */
+.wa-hero.wa-hero--premium .wa-hero-glass .row {
+  position: relative;
+  z-index: 1;
+}
+
 .wa-hero-composite--premium {
   padding-bottom: 4rem;
 }
@@ -231,7 +288,7 @@ body.wa-landing #footer {
 .wa-float-metric i {
   font-size: 1.15rem;
   opacity: 0.95;
-  color: #00862f;
+  color: #a78bfa;
 }
 
 .wa-float-metric--tl { top: 4%; left: -2%; }
@@ -718,26 +775,53 @@ body.wa-landing #footer {
   background: color-mix(in srgb, var(--accent-color), transparent 94%);
 }
 
+/* Misma línea que index (#call-to-action .glass-panel): vidrio, sin bloque verde */
 .wa-cta-final {
-  background: linear-gradient(135deg, #128c7e 0%, #075e54 100%);
-  color: #fff;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  color: var(--default-color);
   border-radius: var(--wa-premium-radius-lg);
   padding: 3rem 2rem;
   text-align: center;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 24px 48px rgba(7, 94, 84, 0.28);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.28);
+}
+
+.wa-cta-final h2,
+.wa-cta-final .h3 {
+  color: var(--heading-color);
 }
 
 .wa-cta-final::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 80% 55% at 80% 20%, rgba(255, 255, 255, 0.12) 0%, transparent 55%);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.06) 0%, transparent 45%);
   pointer-events: none;
 }
 
+.wa-cta-final .lead {
+  color: color-mix(in srgb, var(--default-color) 92%, transparent);
+}
+
 .wa-cta-final .btn-light { font-weight: 600; }
+
+.wa-cta-final .wa-btn-whatsapp-cta {
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  color: #fff !important;
+  border: none;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(18, 140, 126, 0.35);
+}
+
+.wa-cta-final .wa-btn-whatsapp-cta:hover,
+.wa-cta-final .wa-btn-whatsapp-cta:focus-visible {
+  color: #fff !important;
+  filter: brightness(1.06);
+}
 
 section.section { padding-top: 4rem; padding-bottom: 4rem; }
 .wa-muted-note { font-size: 0.9rem; color: color-mix(in srgb, var(--default-color) 75%, transparent); }
