@@ -16,6 +16,14 @@
   --background-color: transparent;
 }
 
+/* Header alineado al index: sin position:relative heredado raro del layout */
+body.wa-landing #header.header.fixed-top {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
 .wa-landing {
   --wa-green: #25d366;
   --wa-green-dark: #128c7e;
@@ -1512,11 +1520,12 @@ section.section { padding-top: 4rem; padding-bottom: 4rem; }
    9) CTA flotante móvil
    -------------------------------------------------------------------------- */
 .wa-mobile-sticky-cta {
-  position: fixed;
+  position: fixed !important;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 999;
+  /* Por debajo del header fijo y del menú móvil abierto; por encima del contenido */
+  z-index: 1035;
   padding: 12px 14px calc(12px + env(safe-area-inset-bottom, 0px));
   background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.85) 35%);
   display: flex;
