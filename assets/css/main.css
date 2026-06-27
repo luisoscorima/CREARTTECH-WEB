@@ -1706,7 +1706,14 @@ section.portfolio,
   left: -3px;
 }
 
-.pricing .pricing-item h4 span {
+.pricing .pricing-item h4 .js-price {
+  color: var(--heading-color);
+  font-size: inherit;
+  font-weight: inherit;
+  display: inline;
+}
+
+.pricing .pricing-item h4 .js-price-period {
   color: color-mix(in srgb, var(--default-color), transparent 40%);
   font-size: 16px;
   font-weight: 300;
@@ -1793,68 +1800,90 @@ section.portfolio,
   box-shadow: 0 4px 18px rgba(139, 92, 246, 0.35);
 }
 
-.pricing-currency-bar {
+.pricing .pricing-currency-bar {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.75rem;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
   text-align: center;
 }
 
-.pricing-currency-toggle {
+.pricing .pricing-currency-toggle {
   display: inline-flex;
-  padding: 4px;
+  align-items: center;
+  gap: 2px;
+  padding: 5px;
   border-radius: 999px;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }
 
-.pricing-currency-btn {
-  border: none;
+.pricing button.pricing-currency-btn {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  border: 0;
+  outline: none;
   background: transparent;
-  color: color-mix(in srgb, var(--default-color), transparent 25%);
-  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: var(--default-font, inherit);
+  font-size: 0.8125rem;
   font-weight: 600;
-  padding: 0.45rem 1.1rem;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  padding: 0.5rem 1.25rem;
   border-radius: 999px;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  transition: color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
 }
 
-.pricing-currency-btn:hover {
-  color: var(--heading-color);
+.pricing button.pricing-currency-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
 }
 
-.pricing-currency-btn.active {
-  background: var(--primary-gradient);
-  color: #fff;
-  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);
+.pricing button.pricing-currency-btn:focus-visible {
+  outline: 2px solid rgba(139, 92, 246, 0.65);
+  outline-offset: 2px;
 }
 
-.pricing-currency-note {
-  max-width: 42rem;
-  color: color-mix(in srgb, var(--default-color), transparent 35%);
-  line-height: 1.45;
+.pricing button.pricing-currency-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #8b5cf6 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.45);
 }
 
-[data-pricing-currency="USD"] .pricing-currency-note-usd {
-  display: inline;
+.pricing button.pricing-currency-btn.active:hover {
+  background: linear-gradient(135deg, #7289f0 0%, #8259b0 50%, #9668fa 100%);
+  color: #ffffff;
 }
 
-[data-pricing-currency="USD"] .pricing-currency-note-pen {
+.pricing .pricing-currency-note {
+  max-width: 36rem;
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.5;
+}
+
+.pricing .pricing-currency-note-usd {
   display: none;
 }
 
-[data-pricing-currency="PEN"] .pricing-currency-note-usd,
-:root:not([data-pricing-currency]) .pricing-currency-note-usd {
-  display: none;
+.pricing .pricing-currency-note-pen {
+  display: block;
 }
 
-[data-pricing-currency="PEN"] .pricing-currency-note-pen,
-:root:not([data-pricing-currency]) .pricing-currency-note-pen {
-  display: inline;
+html[data-pricing-currency="USD"] .pricing .pricing-currency-note-usd {
+  display: block;
+}
+
+html[data-pricing-currency="USD"] .pricing .pricing-currency-note-pen {
+  display: none;
 }
 
 /*--------------------------------------------------------------

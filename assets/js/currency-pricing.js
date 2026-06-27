@@ -56,7 +56,7 @@
       el.innerHTML =
         (prefix ? prefix + ' ' : '') +
         '<sup class="js-price-symbol">' + formatted.symbol + '</sup>' +
-        formatted.value +
+        '<span class="js-price-value">' + formatted.value + '</span>' +
         periodHtml;
     });
   }
