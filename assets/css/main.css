@@ -820,6 +820,11 @@ section,
   overflow: clip;
 }
 
+.section:not(#hero) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 480px;
+}
+
 /* Isotope calcula altura del grid; overflow:clip en section recortaba las tarjetas inferiores */
 section.portfolio,
 #portfolio.portfolio.section {
@@ -944,6 +949,48 @@ section.portfolio,
   max-width: 80%;
   animation-delay: 0.4s;
   margin: 0 auto 30px auto;
+}
+
+@keyframes heroFadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes heroFadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.hero .hero-anim--fade-down {
+  animation: heroFadeInDown 0.75s ease both;
+}
+
+.hero .hero-anim--fade-up {
+  animation: heroFadeInUp 0.75s ease both;
+}
+
+.hero .hero-anim--fade-up-delay {
+  animation: heroFadeInUp 0.75s ease 0.15s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero .hero-anim--fade-down,
+  .hero .hero-anim--fade-up,
+  .hero .hero-anim--fade-up-delay {
+    animation: none;
+  }
 }
 
 .hero .carousel-control-prev,
@@ -1481,6 +1528,12 @@ section.portfolio,
   line-height: 0;
   aspect-ratio: 4 / 3;
   background: rgba(255, 255, 255, 0.04);
+}
+
+.portfolio .portfolio-img-wrap picture {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .portfolio .portfolio-item img {
@@ -3200,6 +3253,12 @@ html[data-pricing-currency="USD"] .pricing .pricing-currency-note-pen {
 
   75% {
     transform: translate(calc(-50% + 50px), calc(-50% + 50px)) scale(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #site-bg-animation {
+    display: none;
   }
 }
 

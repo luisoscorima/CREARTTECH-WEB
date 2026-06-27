@@ -360,6 +360,15 @@ body.wa-landing #footer {
   line-height: 0;
 }
 
+.wa-laptop-screen-shot picture,
+.wa-screenshot-card picture,
+.wa-exp-shot picture,
+.wa-dash-shot picture {
+  display: block;
+  width: 100%;
+  line-height: 0;
+}
+
 .wa-laptop-screen-shot img {
   width: 100%;
   height: auto;
