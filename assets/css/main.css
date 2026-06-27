@@ -1793,6 +1793,70 @@ section.portfolio,
   box-shadow: 0 4px 18px rgba(139, 92, 246, 0.35);
 }
 
+.pricing-currency-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+
+.pricing-currency-toggle {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.pricing-currency-btn {
+  border: none;
+  background: transparent;
+  color: color-mix(in srgb, var(--default-color), transparent 25%);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pricing-currency-btn:hover {
+  color: var(--heading-color);
+}
+
+.pricing-currency-btn.active {
+  background: var(--primary-gradient);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);
+}
+
+.pricing-currency-note {
+  max-width: 42rem;
+  color: color-mix(in srgb, var(--default-color), transparent 35%);
+  line-height: 1.45;
+}
+
+[data-pricing-currency="USD"] .pricing-currency-note-usd {
+  display: inline;
+}
+
+[data-pricing-currency="USD"] .pricing-currency-note-pen {
+  display: none;
+}
+
+[data-pricing-currency="PEN"] .pricing-currency-note-usd,
+:root:not([data-pricing-currency]) .pricing-currency-note-usd {
+  display: none;
+}
+
+[data-pricing-currency="PEN"] .pricing-currency-note-pen,
+:root:not([data-pricing-currency]) .pricing-currency-note-pen {
+  display: inline;
+}
+
 /*--------------------------------------------------------------
 # Faq Section
 --------------------------------------------------------------*/

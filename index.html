@@ -756,6 +756,16 @@
       </div><!-- End Section Title -->
 
       <div class="container">
+        <div class="pricing-currency-bar" data-aos="fade-up" data-aos-delay="60">
+          <div class="pricing-currency-toggle" role="group" aria-label="Moneda de precios">
+            <button type="button" class="pricing-currency-btn active" data-currency="PEN" aria-pressed="true">S/ PEN</button>
+            <button type="button" class="pricing-currency-btn" data-currency="USD" aria-pressed="false">$ USD</button>
+          </div>
+          <p class="pricing-currency-note small mb-0">
+            <span class="pricing-currency-note-pen">Precios en soles peruanos (PEN).</span>
+            <span class="pricing-currency-note-usd">Precios referenciales en dólares (USD) según tipo de cambio. La facturación se realiza en soles (PEN) salvo acuerdo distinto.</span>
+          </p>
+        </div>
         <div class="section-box glass-panel" data-aos="fade-up" data-aos-delay="80">
 
           <div class="row gy-3 justify-content-center">
@@ -763,7 +773,7 @@
             <div class="col-xl-4 col-lg-6" data-aos="fade-up" data-aos-delay="100">
               <div class="pricing-item featured">
                 <h3>Básico</h3>
-                <h4><sup>S/</sup>299<span> / mes</span></h4>
+                <h4><span class="js-price" data-price-pen="299"><sup>S/</sup>299<span class="js-price-period"> / mes</span></span></h4>
                 <ul>
                   <li>Consultoría inicial</li>
                   <li>Análisis de infraestructura</li>
@@ -781,7 +791,7 @@
               <div class="pricing-item featured">
                 <span class="pricing-ribbon recommended">Recomendado</span>
                 <h3>Negocio</h3>
-                <h4><sup>S/</sup>499<span> / mes</span></h4>
+                <h4><span class="js-price" data-price-pen="499"><sup>S/</sup>499<span class="js-price-period"> / mes</span></span></h4>
                 <ul>
                   <li>Consultoría inicial</li>
                   <li>Análisis de infraestructura</li>
@@ -799,7 +809,7 @@
               <div class="pricing-item featured">
                 <span class="pricing-ribbon advanced">Avanzado</span>
                 <h3>Corporativo</h3>
-                <h4>Desde <sup>S/</sup>799<span> / mes</span></h4>
+                <h4><span class="js-price" data-price-pen="799" data-price-prefix="Desde"><sup>S/</sup>799<span class="js-price-period"> / mes</span></span></h4>
                 <ul>
                   <li>Consultoría inicial</li>
                   <li>Análisis de infraestructura</li>
@@ -1094,6 +1104,7 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/currency-pricing.js"></script>
   <script>
     (function () {
       var waves = document.querySelector('#hero .hero-waves');
