@@ -1433,6 +1433,14 @@ section.portfolio,
   background: linear-gradient(135deg, #f093fb, #ec4899);
 }
 
+.services .tech-icon--g {
+  background: linear-gradient(135deg, #06b6d4, #3b82f6);
+}
+
+.services .tech-icon--h {
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+}
+
 .services .tech-item-title {
   font-weight: 600;
   font-size: 0.95rem;
