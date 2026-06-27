@@ -32,7 +32,8 @@
 
   function formatValue(amount, currency) {
     if (currency === 'PEN') {
-      return { symbol: 'S/', value: amount };
+      var penValue = Number.isInteger(amount) ? String(amount) : amount.toFixed(2);
+      return { symbol: 'S/', value: penValue };
     }
     return { symbol: '$', value: toUsd(amount) };
   }
