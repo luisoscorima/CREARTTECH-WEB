@@ -790,6 +790,40 @@ body.wa-landing #footer {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
 }
 
+.wa-landing .wa-meta-pricing-note {
+  max-width: 46rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.9rem 1.15rem;
+  border-radius: 12px;
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  background: rgba(251, 191, 36, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.55;
+}
+
+.wa-landing .wa-meta-pricing-note a {
+  color: #fbbf24;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 600;
+}
+
+.wa-landing .wa-meta-pricing-note a:hover {
+  color: #fcd34d;
+}
+
+.wa-landing .wa-icon-list a {
+  color: #93c5fd;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 600;
+}
+
+.wa-landing .wa-icon-list a:hover {
+  color: #bfdbfe;
+}
+
 .wa-glass-card--sm { border-radius: 16px; }
 .wa-table-extras th, .wa-table-extras td { vertical-align: middle; }
 .wa-table-wrap .wa-table-extras { margin-bottom: 0; color: rgba(255, 255, 255, 0.92); }
